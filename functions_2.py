@@ -117,50 +117,52 @@ def noise_gen(ProbNoise, dist_z):
     
     return noise_matrix
 def setup_3d_track_plot():
-     fig = plt.figure(figsize = (20,8))
-     gs = GridSpec(2, 3, figure=fig)
-     ax1 = fig.add_subplot(gs[0, :2])
-     plt.title('x-z view',fontsize = 15)
+    fig = plt.figure(figsize = (20,8))
+    gs = GridSpec(2, 3, figure=fig)
+    ax1 = fig.add_subplot(gs[0, :2])
+    plt.title('x-z view',fontsize = 15, loc='left')
+    
+    ax1.plot([0.,150.],[0.,0.], color = 'blue')
+    ax1.plot([0.,150.],[-1*dist_z,-1*dist_z], color = 'blue')
+    ax1.plot([0.,150.],[-2*dist_z,-2*dist_z], color = 'blue')
+    ax1.set_xlabel('x [mm]')
+    ax1.set_ylabel('z [mm]')
+    ax1.grid(alpha = 0.5)
+    ax1.set_xlim(-10,160)
+    ax1.set_ylim(-25.5,8.5)
 
-     ax1.plot([0.,150.],[0.,0.], color = 'blue')
-     ax1.plot([0.,150.],[-1*dist_z,-1*dist_z], color = 'blue')
-     ax1.plot([0.,150.],[-2*dist_z,-2*dist_z], color = 'blue')
-     ax1.set_xlabel('x [mm]')
-     ax1.set_ylabel('z [mm]')
-     ax1.grid(alpha = 0.5)
-     ax1.set_xlim(-10,160)
-     ax1.set_ylim(-25.5,8.5)
+    ax2 = fig.add_subplot(gs[1, :2])
+    
+    plt.title('y-z view',fontsize = 15, loc='left')
+    
 
-     ax2 = fig.add_subplot(gs[1, :2])
-     plt.title('y-z view',fontsize = 15)
+    for tur in range(0,5):
+        shift = tur*(30+Lgap+Sgap)
+        ax2.plot([shift + 0.,shift + 30.15],[0.,0.], color = 'blue')
+        ax2.plot([shift + 0.,shift + 30.15],[-1*dist_z,-1*dist_z], color = 'blue')
+        ax2.plot([shift + 0.,shift + 30.15],[-2*dist_z,-2*dist_z], color = 'blue')
+    ax2.set_xlabel('y [mm]')
+    ax2.set_ylabel('z [mm]')
+    ax2.grid(alpha = 0.5)
+    ax2.set_xlim(-10,180)
+    ax2.set_ylim(-25.5,8.5)
 
-     for tur in range(0,5):
-          shift = tur*(30+Lgap+Sgap)
-          ax2.plot([shift + 0.,shift + 30.15],[0.,0.], color = 'blue')
-          ax2.plot([shift + 0.,shift + 30.15],[-1*dist_z,-1*dist_z], color = 'blue')
-          ax2.plot([shift + 0.,shift + 30.15],[-2*dist_z,-2*dist_z], color = 'blue')
-     ax2.set_xlabel('y [mm]')
-     ax2.set_ylabel('z [mm]')
-     ax2.grid(alpha = 0.5)
-     ax2.set_xlim(-10,180)
-     ax2.set_ylim(-25.5,8.5)
+    ax3 = fig.add_subplot(gs[:, 2])
+    plt.title('x-y view',fontsize = 15)
 
-     ax3 = fig.add_subplot(gs[:, 2])
-     plt.title('x-y view',fontsize = 15)
+    for tur in range(0,5):
+        shift = tur*(30+Lgap+Sgap)
+        ax3.plot([0.,150.],[shift + 0.,shift + 0.], color = 'blue')
+        ax3.plot([0.,150.],[shift + 30.15,shift + 30.15], color = 'blue')
+        ax3.plot([0.,0.],[shift + 0.,shift + 30.15], color = 'blue')
+        ax3.plot([150.,150.],[shift + 0.,shift + 30.15], color = 'blue')
 
-     for tur in range(0,5):
-          shift = tur*(30+Lgap+Sgap)
-          ax3.plot([0.,150.],[shift + 0.,shift + 0.], color = 'blue')
-          ax3.plot([0.,150.],[shift + 30.15,shift + 30.15], color = 'blue')
-          ax3.plot([0.,0.],[shift + 0.,shift + 30.15], color = 'blue')
-          ax3.plot([150.,150.],[shift + 0.,shift + 30.15], color = 'blue')
-
-     ax3.set_xlabel('x [mm]')
-     ax3.set_ylabel('y [mm]')
-     ax3.grid(alpha = 0.5)
-     ax3.set_xlim(-10,160)
-     ax3.set_ylim(-15,180)
-     return fig, ax1, ax2, ax3
+    ax3.set_xlabel('x [mm]')
+    ax3.set_ylabel('y [mm]')
+    ax3.grid(alpha = 0.5)
+    ax3.set_xlim(-10,160)
+    ax3.set_ylim(-15,180)
+    return fig, ax1, ax2, ax3
 
 def display_single_fit(point,vec_reco,cent_reco,seg=True):
      fig, ax1, ax2, ax3 = setup_3d_track_plot()
