@@ -1,0 +1,5 @@
+﻿Appunti 08-07
+Hough Transform
+
+ottimizzazione parametri
+
