@@ -1,5 +1,5 @@
 #### sim_parameters
-OUTPUT_FILE = "/home/luca/Uni/VI/Tesi/10k_5_tracks.csv"
+OUTPUT_FILE = "/home/luca/Uni/VI/Tesi/test_tg.csv"
 N_EVGEN = 10000
 N_TRK = 5
 mu = 0.					 # precisione di allinemento (S. Coli)

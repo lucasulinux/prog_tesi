@@ -191,9 +191,9 @@ def fit_straight_line(points):
 
     return dir_reco,centroid_reco 
 
-outfile = config_gen.OUTPUT_FILE
+#outfile = config_gen.OUTPUT_FILE
 
-def save_csv_py(data):
+def save_csv_py(data,dir):
     ''' 
         in input una classe di tipo data
     '''
@@ -214,8 +214,7 @@ def save_csv_py(data):
     df = pd.DataFrame(d)
     df['event'] = df['event'].astype(int)
     df['trk_index'] = df['trk_index'].astype(int)
-    df.to_csv(outfile, index=False)
-
+    df.to_csv(dir, index=False)
 
 def read_csv_py(filename):
     df = pd.read_csv(filename)
